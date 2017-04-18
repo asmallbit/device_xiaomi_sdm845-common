@@ -154,7 +154,7 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 
 # Inherit from the proprietary version
--include vendor/xiaomi/sdm845-common/BoardConfigVendor.mk
+include vendor/xiaomi/sdm845-common/BoardConfigVendor.mk
 
 # Broken Rules
 BUILD_BROKEN_DUP_RULES := true
@@ -164,3 +164,4 @@ BUILD_BROKEN_PREBUILT_ELF_FILES := true
 RELAX_USES_LIBRARY_CHECK := true
 SELINUX_IGNORE_NEVERALLOWS := true
 BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
+
