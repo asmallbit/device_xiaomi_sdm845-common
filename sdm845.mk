@@ -392,8 +392,7 @@ PRODUCT_PACKAGES += \
     libnl \
     libwfdaac_vendor
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+include vendor/xiaomi/sdm845-common-extra/wfd.mk
 
 PRODUCT_PACKAGES += \
     android.frameworks.automotive.display@1.0.vendor \
