@@ -17,7 +17,8 @@
 package org.lineageos.settings.thermal;
 
 import android.app.ActivityManager;
-import android.app.ActivityTaskManager;
+import android.app.ActivityTaskManager.RootTaskInfo;
+import android.app.IActivityManager;
 import android.app.Service;
 import android.app.TaskStackListener;
 import android.content.BroadcastReceiver;
@@ -102,7 +103,27 @@ public class ThermalService extends Service {
         this.registerReceiver(mIntentReceiver, filter);
     }
 
-    private void unregisterReceiver() {
-        this.unregisterReceiver(mIntentReceiver);
+    private class ActivityRunnable implements Runnable {
+        private Context context;
+
+        private ActivityRunnable(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void run() {
+            try {
+                RootTaskInfo focusedStack = mIActivityManager.getFocusedRootTaskInfo();
+                if (focusedStack != null && focusedStack.topActivity != null) {
+                    String foregroundApp = focusedStack.topActivity.getPackageName();
+                    mHandler.postDelayed(this, 500);
+                    if (!foregroundApp.equals(mPreviousApp)) {
+                        mThermalUtils.setThermalProfile(foregroundApp);
+                        mPreviousApp = foregroundApp;
+                    }
+                }
+            } catch (RemoteException ignored) {
+            }
+        }
     }
 }
