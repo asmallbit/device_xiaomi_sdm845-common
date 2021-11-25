@@ -24,20 +24,20 @@
 #include <fstream>
 
 #define COMMAND_NIT 10
-#define PARAM_NIT_630_FOD 1
+#define PARAM_NIT_630_UDFPS 1
 #define PARAM_NIT_NONE 0
 
 #define DISPPARAM_PATH "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param"
-#define DISPPARAM_HBM_FOD_ON "0x20000"
-#define DISPPARAM_HBM_FOD_OFF "0xE0000"
+#define DISPPARAM_HBM_UDFPS_ON "0x20000"
+#define DISPPARAM_HBM_UDFPS_OFF "0xE0000"
 
-#define FOD_STATUS_PATH "/sys/devices/virtual/touch/tp_dev/fod_status"
-#define FOD_STATUS_ON 1
-#define FOD_STATUS_OFF 0
+#define UDFPS_STATUS_PATH "/sys/devices/virtual/touch/tp_dev/fod_status"
+#define UDFPS_STATUS_ON 1
+#define UDFPS_STATUS_OFF 0
 
-#define FOD_SENSOR_X 453
-#define FOD_SENSOR_Y 1640
-#define FOD_SENSOR_SIZE 173
+#define UDFPS_SENSOR_X 453
+#define UDFPS_SENSOR_Y 1640
+#define UDFPS_SENSOR_SIZE 173
 
 namespace {
 
@@ -62,15 +62,15 @@ FingerprintInscreen::FingerprintInscreen() {
 }
 
 Return<int32_t> FingerprintInscreen::getPositionX() {
-    return FOD_SENSOR_X;
+    return UDFPS_SENSOR_X;
 }
 
 Return<int32_t> FingerprintInscreen::getPositionY() {
-    return FOD_SENSOR_Y;
+    return UDFPS_SENSOR_Y;
 }
 
 Return<int32_t> FingerprintInscreen::getSize() {
-    return FOD_SENSOR_SIZE;
+    return UDFPS_SENSOR_SIZE;
 }
 
 Return<void> FingerprintInscreen::onStartEnroll() {
@@ -82,24 +82,24 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 }
 
 Return<void> FingerprintInscreen::onPress() {
-    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_ON);
-    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_630_FOD);
+    set(DISPPARAM_PATH, DISPPARAM_HBM_UDFPS_ON);
+    xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_630_UDFPS);
     return Void();
 }
 
 Return<void> FingerprintInscreen::onRelease() {
-    set(DISPPARAM_PATH, DISPPARAM_HBM_FOD_OFF);
+    set(DISPPARAM_PATH, DISPPARAM_HBM_UDFPS_OFF);
     xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
     return Void();
 }
 
-Return<void> FingerprintInscreen::onShowFODView() {
-    set(FOD_STATUS_PATH, FOD_STATUS_ON);
+Return<void> FingerprintInscreen::onShowUDFPSView() {
+    set(UDFPS_STATUS_PATH, UDFPS_STATUS_ON);
     return Void();
 }
 
-Return<void> FingerprintInscreen::onHideFODView() {
-    set(FOD_STATUS_PATH, FOD_STATUS_OFF);
+Return<void> FingerprintInscreen::onHideUDFPSView() {
+    set(UDFPS_STATUS_PATH, UDFPS_STATUS_OFF);
     return Void();
 }
 

@@ -37,14 +37,14 @@ int main() {
 
     status_t status = service->registerAsService();
     if (status != OK) {
-        LOG(ERROR) << "Cannot register FOD HAL service.";
+        LOG(ERROR) << "Cannot register UDFPS HAL service.";
         return 1;
     }
 
-    LOG(INFO) << "FOD HAL service ready.";
+    LOG(INFO) << "UDFPS HAL service ready.";
 
     joinRpcThreadpool();
 
-    LOG(ERROR) << "FOD HAL service failed to join thread pool.";
+    LOG(ERROR) << "UDFPS HAL service failed to join thread pool.";
     return 1;
 }

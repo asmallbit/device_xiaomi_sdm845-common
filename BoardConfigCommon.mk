@@ -69,12 +69,12 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# FOD
+# UDFPS
 ifneq ($(filter equuleus ursa,$(TARGET_DEVICE)),)
-TARGET_SURFACEFLINGER_FOD_LIB := //$(COMMON_PATH):libfod_extension.xiaomi_sdm845
+TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.xiaomi_sdm845
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
-    $(COMMON_PATH)/fod/vendor_aospa_fod_framework_compatibility_matrix.xml
+    $(COMMON_PATH)/udfps/vendor_aospa_udfps_framework_compatibility_matrix.xml
 endif
 
 # HIDL

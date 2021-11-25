@@ -43,8 +43,8 @@ class FingerprintInscreen : public IFingerprintInscreen {
     Return<void> onFinishEnroll() override;
     Return<void> onPress() override;
     Return<void> onRelease() override;
-    Return<void> onShowFODView() override;
-    Return<void> onHideFODView() override;
+    Return<void> onShowUDFPSView() override;
+    Return<void> onHideUDFPSView() override;
     Return<bool> handleAcquired(int32_t acquiredInfo, int32_t vendorCode) override;
     Return<bool> handleError(int32_t error, int32_t vendorCode) override;
     Return<void> setLongPressEnabled(bool enabled) override;
