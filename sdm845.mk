@@ -212,8 +212,7 @@ TARGET_COMMON_QTI_COMPONENTS += \
     overlay \
     perf \
     telephony \
-    usb \
-    wfd
+    usb
 
 # Recovery
 PRODUCT_PACKAGES += \
