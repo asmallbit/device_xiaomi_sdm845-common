@@ -190,7 +190,6 @@ PRODUCT_PACKAGES += \
     SDM845Bluetooth \
     SDM845Frameworks \
     SDM845Settings \
-    SDM845SettingsProvider \
     SDM845SystemUI \
     SDM845Tethering
 
