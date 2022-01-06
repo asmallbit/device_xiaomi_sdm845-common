@@ -41,6 +41,8 @@ using ::android::hardware::hidl_vec;
 using ::android::hardware::Return;
 using ::android::hardware::Void;
 using ::android::hardware::biometrics::fingerprint::V2_3::IBiometricsFingerprint;
+using ::android::hardware::biometrics::fingerprint::V2_1::FingerprintAcquiredInfo;
+using ::android::hardware::biometrics::fingerprint::V2_1::FingerprintError;
 using ::android::hardware::biometrics::fingerprint::V2_1::IBiometricsFingerprintClientCallback;
 using ::android::hardware::biometrics::fingerprint::V2_1::RequestStatus;
 
@@ -82,6 +84,13 @@ struct BiometricsFingerprint : public IBiometricsFingerprint, public IXiaomiFing
     std::mutex mClientCallbackMutex;
     sp<IBiometricsFingerprintClientCallback> mClientCallback;
     fingerprint_device_t* mDevice;
+
+    // Methods from ::android::hardware::biometrics::fingerprint::V2_3::IBiometricsFingerprint follow.
+    Return<bool> isUdfps(uint32_t sensorId) override;
+    Return<void> onFingerDown(uint32_t x, uint32_t y, float minor, float major) override;
+    Return<void> onFingerUp() override;
+    Return<void> onShowUdfpsOverlay() override;
+    Return<void> onHideUdfpsOverlay() override;
 };
 
 }  // namespace implementation
