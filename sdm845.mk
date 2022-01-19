@@ -431,6 +431,7 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.face@1.0.vendor \
     android.hardware.biometrics.fingerprint@2.1.vendor \
     android.hardware.biometrics.fingerprint@2.2.vendor \
+    android.hardware.biometrics.fingerprint@2.3.vendor \
     android.hardware.bluetooth.a2dp@1.0.vendor \
     android.hardware.bluetooth.audio@2.0.vendor \
     android.hardware.bluetooth@1.0.vendor \
@@ -568,5 +569,6 @@ PRODUCT_PACKAGES += \
     android.system.wifi.keystore@1.0.vendor \
     libadf.vendor \
     libstdc++.vendor \
+    libtinyxml.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
-    libtinyxml.vendor
+    vendor.xiaomi.hardware.fingerprintextension@1.0.vendor 
