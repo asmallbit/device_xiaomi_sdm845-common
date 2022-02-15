@@ -72,6 +72,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # UDFPS
 ifneq ($(filter equuleus ursa,$(TARGET_DEVICE)),)
 TARGET_SURFACEFLINGER_UDFPS_LIB := //$(COMMON_PATH):libudfps_extension.xiaomi_sdm845
+TARGET_USES_FOD_ZPOS := true
 endif
 
 # HIDL
